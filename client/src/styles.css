@@ -1,12 +1,25 @@
+:root {
+    --background-color: #f2f0f7;
+    --text-color: #333;
+    --border-color: #d9d9e3;
+    --highlight-color: hsl(259, 45%, 31%);
+    --button-hover-color: hsl(259, 80%, 31%);
+    --footer-background-color: #d9d9e3;
+    --secondary-text-color: #7146db;
+    --button-login-background: #967adc;
+    --button-payment-color: #F3A6C9;
+    --font-primary: 'Architects Daughter', cursive;
+    --font-secondary: 'Inconsolata', monospace;
+}
+
 body {
-    background-color: #f2f0f7;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .navbar {
-    border-bottom: 1px solid;
-    border-color: #d9d9e3;
-    background-color: #f2f0f7;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--background-color);
     padding: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 120px;
@@ -17,24 +30,45 @@ body {
     top: 0;
   }
 
-.navbar button {
+  button {
+    padding: 10px 20px;
+    margin-left: 10px;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+.navbar button {
     padding: 0.5 rem 1 rem;
     margin: 0 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100px;
     box-sizing: border-box;
+}
 
+.button_login{
+  background-color: var(--button-login-background);
+  color: white;
+  font-size: 18px;
+  padding: 0.5 rem 1 rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100px;
+  height: 50px;
+  box-sizing: border-box;
 }
 
 .navbar button:hover {
-  color: hsl(259, 45%, 31%);
+  color: var(--highlight-color);
 
+}
+.navbar__logo img:hover {
+  transform: scale(1.1);
 }
 .button_payments{
   background-color: transparent;
-  color: #F3A6C9;
+  color: var(--button-payment-color);
   font-family: 'Inconsolata', monospace;
   font-size: 25px;
   font-weight: 600;
@@ -42,25 +76,26 @@ body {
 }
 
 .button_login {
-  background-color: #967adc;
+  background-color: var(--button-login-background);
   color: white;
   font-size: 18px;
 }
 
-.navbar, .footer {
-  padding: 0.5rem;
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
 }
-
 .footer {
-    color: #7146db;
+    color: var(--secondary-text-color);
     text-align: center;
     padding: 1 rem 0;
     font-size: 14px;
-    background-color: #d9d9e3;
+    background-color: var(--footer-background-color);
 }
 
   .github-link:hover {
-    color: hsl(259, 80%, 31%);
+    color: var(--button-hover-color);
   }
 /* ===============================payment form==========================*/
 /* General container to align form to the middle */
@@ -135,9 +170,10 @@ select, .payment-form select,
   }
   
   .table thead tr {
-    background-color:  #7146db;
-    color: white;
+    background-color:  inherit;
+    color: var(--button-payment-color);
     text-align: left;
+    font-family: var(--font-primary);
   }
   
   .table th,
@@ -146,6 +182,9 @@ select, .payment-form select,
     padding: 20px;
     text-align: left;
     width: 500px;
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    color: var(--text-color);
   }
   
   .table tbody tr:nth-child(even) {
@@ -154,44 +193,83 @@ select, .payment-form select,
   /* ===============================payment list filtering==========================*/
   .filter-container {
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
     margin-bottom: 20px;
   }
   label {
+    color: var(--button-login-background);
     font-weight: bold;
+    font-size: 20px;
     margin-right: 10px;
   }
   input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    height: 40px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding: 2%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: inherit;
   }
-  button {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  input:focus{
+    transform: scale(1.1);
+    outline-color: #7146db;
+    
   }
-  .filter-button {
-    background-color: #7146db;
+  .button_filter {
+    background-color: var(--button-login-background);
     color: white;
-    margin-left: 10px;
+    font-size: 18px;
+    padding: 0.5 rem 1 rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100px;
+    height: 50px;
+    box-sizing: border-box;
+
+  }
+
+  .button_filter:hover {
+    color: var(--highlight-color);
+  
   }
   .filter-group {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;  
+    display: grid;
+    grid-template-columns: 1fr 1fr 120px;
   }
   .filter-item {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
   }
   
   .filter-container label {
-    font-weight: bold;
+    font-family: var(--font-secondary);
     margin-right: 10px;
   }
+
+  .home-page__image-container, .payment-page__image-container, .payment-list-page__image-container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    height: 200px;
+    font-size: 20px;
+    font-family: var(--font-primary);
+    justify-content: space-evenly;
+  }
+
+  
+.home-page__image, .payment-page__image, .payment-list-page__image {
+  width: 200px;
+  height: 180px;
+}
+
+.home-page__description, .payment-page__description, .payment-list-page__description {
+  border: 1px solid;
+  border-color: #7146db;
+  height: 160px;
+  box-shadow: 6px 4px 8px;
+  padding: 2%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 80%;
+}

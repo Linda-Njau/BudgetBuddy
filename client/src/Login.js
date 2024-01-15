@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { postData } from './httpService';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -7,6 +8,7 @@ import './FormStyles.css';
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const[loginError, setLoginError] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -21,7 +23,7 @@ const Login = () => {
             
             navigate('/PaymentEntry');
         } catch (error) {
-            console.error('Login Failed:', error);
+            setLoginError('Invalid username or password. please try again');
         }
     };
     return (
@@ -46,6 +48,10 @@ const Login = () => {
           />
         </label>
         <button className="form-button" type="submit">Login</button>
+        {loginError && <p className="error-message">{loginError}</p>}
+        <p className="signup-link">
+        No account? <Link to="/signUp">Sign up</Link>
+      </p>
       </form>
     </div>    
     );
